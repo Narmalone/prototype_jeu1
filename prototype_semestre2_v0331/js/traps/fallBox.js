@@ -6,6 +6,8 @@ class fallingBox extends Phaser.GameObjects.Sprite{
         this.scene.add.existing(this);
         scene.physics.add.existing(this);
         this.body.allowGravity = false;
-
+        this.setScale(0.2,0.2);
     }
+    
+    
 }

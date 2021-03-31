@@ -14,7 +14,6 @@ class player extends Phaser.GameObjects.Sprite{
         this.keyQ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
         this.keyZ = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
         this.keyD = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        this.keyE = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         //jumps//
         //permet de compter le nombre de jumps//
@@ -106,14 +105,5 @@ class player extends Phaser.GameObjects.Sprite{
        
        
     }
-    // activeLevier(){
-
-    //     this.textAction = new Text(level1, 0, -200,'ALLOW')
-    //     console.log('levier activé')
-
-    //     if(this.keyE.isDown){
-    //         // caisse.body.allowGravity = false
-    //     }
-    // }
 
 }

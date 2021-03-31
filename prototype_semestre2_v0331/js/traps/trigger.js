@@ -16,7 +16,8 @@ class trigger extends Phaser.GameObjects.Container {
         this.textAction = false;
         scene.physics.add.overlap(this, joueur, this.activeLevier, null, this);
         this.textInteract = scene.add.text(0,-50,'E INTERACT', {fill: "white"}).setOrigin(0.5).setAlpha(0);
-        this.add(this.textInteract)
+        this.add(this.textInteract);
+
     }
     activeLevier(){
         this.textAction = true;

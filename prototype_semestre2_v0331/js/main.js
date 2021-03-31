@@ -20,5 +20,4 @@ var ennemies;
 var nCJumpMax = 2;
 var nCountJump = 0;
 var bswitch= false;
-
 var game = new Phaser.Game(config);

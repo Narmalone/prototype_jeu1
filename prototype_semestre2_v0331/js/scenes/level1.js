@@ -64,9 +64,16 @@ class level1 extends Phaser.Scene{
             this.caisse[caisseIndex] = this.objc;
             caisseIndex ++;
         })
-
+        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.physics.add.overlap(this.objc, this.ennemies, this.collRat,null,this);
     }
+    collRat(curObject, curEnnemy){
+        // this.disBody = true;
+        this.physics.world.disable(curEnnemy);
+        curEnnemy.setVisible(false);
 
+        console.log(curEnnemy)
+    }
     update(){
         //UPDATE DES MOOVEMENTS DU JOUEUR//
         joueur.update();
@@ -86,5 +93,13 @@ class level1 extends Phaser.Scene{
             }
         }
         this.objt.textAction = false;
+
+            // A OPTIMISER DANS LA CLASSE TRIGGER//
+        if(this.keyE.isDown){
+            this.objc.body.allowGravity = true;
+        }
+
+        
     }
+    
 }
