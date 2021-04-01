@@ -24,12 +24,17 @@ class load extends Phaser.Scene {
 
         // GENERATION DES CAISSES QUI SE FONT PAR TRIGGER//
         this.load.image('caisse','assets/caisse.png');
+
+        //GENERATION DES MUSIQUES ET SONS//
+        //MUSIQUE DU MENU DU JEU//
+        this.load.audio('menuMusic', 'assets/audio/menuMusic.mp3');
+        this.load.audio('troll', 'assets/audio/trollMusic.mp3');
     }
 
     //par le create on va lancer la scene du menu du jeu//
     create(){
 
         //cette ligne va lancer après avoir les assets va démarrer la scene//
-        this.scene.start('level1');
+        this.scene.start('Menu');
     }
 }

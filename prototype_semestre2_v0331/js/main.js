@@ -9,7 +9,7 @@ var config = {
             debug: false
         }
     },
-    scene: [load, level1]
+    scene: [load, mainMenu, level1]
 };
 
 //création variable joueur//
