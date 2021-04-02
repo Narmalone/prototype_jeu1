@@ -9,9 +9,70 @@ class load extends Phaser.Scene {
     //Dans la fonction preload, on charge les assets//
     preload(){
 
-        //CREATION DU JOUEUR//
-        this.load.image('personnage','assets/personnage.png');
+        var progressBar = this.add.graphics();
+        var progressBox = this.add.graphics();
+        progressBox.fillStyle(0x222222, 0.8);
+        progressBox.fillRect(game.config.width/2 - 160, game.config.height/2 - 25 , 320, 50);
+        
+        var width = this.cameras.main.width;
+        var height = this.cameras.main.height;
+        var loadingText = this.make.text({
+            x: width / 2,
+            y: height / 2 - 50,
+            text: 'CHARGEMENT...',
+            style: {
+                font: '20px monospace',
+                fill: '#ffffff'
+            }
+        });
+        loadingText.setOrigin(0.5, 0.5);
+        
+        var percentText = this.make.text({
+            x: width / 2,
+            y: height / 2,
+            text: '0%',
+            style: {
+                font: '18px monospace',
+                fill: '#ffffff'
+            }
+        });
+        percentText.setOrigin(0.5, 0.5);
+        
+        var assetText = this.make.text({
+            x: width / 2,
+            y: height / 2 + 50,
+            text: '',
+            style: {
+                font: '18px monospace',
+                fill: '#ffffff'
+            }
+        });
 
+        assetText.setOrigin(0.5, 0.5);
+        
+        this.load.on('progress', function (value) {
+            percentText.setText(parseInt(value * 100) + '%');
+            progressBar.clear();
+            progressBar.fillStyle(0xffffff, 1);
+            progressBar.fillRect(game.config.width/2 - 150, game.config.height/2 - 15, 300 * value, 30);
+        });
+        
+        this.load.on('fileprogress', function (file) {
+            assetText.setText('Chargement des assets: ' + file.key);
+        });
+
+        this.load.on('complete', function () {
+            progressBar.destroy();
+            progressBox.destroy();
+            loadingText.destroy();
+            percentText.destroy();
+            assetText.destroy();
+        });
+        //CREATION DU JOUEUR//
+        // for(var i = 0; i< 1000; i++){
+        //     this.load.image('personnage' + i,'assets/personnage.png');
+        // }
+        this.load.image('personnage','assets/personnage.png');
         //GENERATION DU NIVEAU//
         this.load.tilemapTiledJSON('level1','assets/tile/json/tilemap.json');
         this.load.image('platform','assets/tile/tileset.png');
@@ -28,7 +89,9 @@ class load extends Phaser.Scene {
         //GENERATION DES MUSIQUES ET SONS//
         //MUSIQUE DU MENU DU JEU//
         this.load.audio('menuMusic', 'assets/audio/menuMusic.mp3');
-        this.load.audio('troll', 'assets/audio/trollMusic.mp3');
+
+
+
     }
 
     //par le create on va lancer la scene du menu du jeu//

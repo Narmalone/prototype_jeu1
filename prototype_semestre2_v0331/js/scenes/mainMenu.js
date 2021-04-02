@@ -5,14 +5,11 @@ class mainMenu extends Phaser.Scene {
         super('Menu');
 
     }
+    preload() {
 
+    }
 
     create(){
-        textPlay = this.add.text(500,300, 'PLAY',{fill: "white"});
-        textPlay.setInteractive();
-        textPlay.on('pointerup', function(pointer){
-            this.scene.start('level1');
-        }, this);
 
         var musicConfig = {
             mute: false,
@@ -23,8 +20,17 @@ class mainMenu extends Phaser.Scene {
             loop: true,
             delay:0
         }
-        
+            
         menuMusic = this.sound.add('menuMusic', musicConfig);
+        textPlay = this.add.text(400,270, 'PLAY',{font: "100px",fill: "white"});
         menuMusic.play();
+
+        
+        textPlay.setInteractive();
+        textPlay.on('pointerup', function(pointer){
+            this.scene.start('level1');
+
+        }, this);
+
     }
 }
