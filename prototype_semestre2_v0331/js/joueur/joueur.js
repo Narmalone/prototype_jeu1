@@ -25,7 +25,7 @@ class player extends Phaser.GameObjects.Sprite{
 
         //vitesse//
         this.vmax = 300;
-        this.speedX = 0;
+        this.speedX = 10;
         this.speedY = -175;
         this.textAction;
         this.body.setAllowDrag(true)
