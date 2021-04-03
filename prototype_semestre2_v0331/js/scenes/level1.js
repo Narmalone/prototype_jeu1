@@ -66,6 +66,9 @@ class level1 extends Phaser.Scene{
         })
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         this.physics.add.overlap(this.objc, this.ennemies, this.collRat,null,this);
+        myPad = this.input.gamepad.pad1;
+        console.log(myPad)
+
     }
     collRat(curObject, curEnnemy){
         // this.disBody = true;
@@ -75,6 +78,7 @@ class level1 extends Phaser.Scene{
         console.log(curEnnemy)
     }
     update(){
+
         //UPDATE DES MOOVEMENTS DU JOUEUR//
         joueur.update();
         
@@ -98,7 +102,6 @@ class level1 extends Phaser.Scene{
         if(this.keyE.isDown){
             this.objc.body.allowGravity = true;
         }
-
         
     }
     

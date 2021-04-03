@@ -29,21 +29,32 @@ class player extends Phaser.GameObjects.Sprite{
         this.speedY = -175;
         this.textAction;
         this.body.setAllowDrag(true)
+        this.inputs = true;
         
+
+        //AJOUT DU GAMEPAD//
+        // this.input.GAMEPAD.once('down', function (pad, button, index){
+        //     text.setText('Playing with ' + pad.id);
+
+        //     GAMEPAD = pad;
+    
+        // }, this);
 
     }
 
-    
+
 
     update(){
-
+        
         this.body.setDrag(1000,0);
 
-        if(Math.abs(this.speedX) >= 100){
-            console.log(this.speedX)
+        if(Math.abs(this.speedX && this.inputs == true) >= 200){
+            this.inputs = false
+            // console.log(this.speedX)
             this.body.setDrag(200,0);
         }
-        if(Math.abs(this.speedX) <= 100){
+        if(Math.abs(this.speedX && this.inputs == true) <= -200){
+            this.inputs = false
             console.log(this.speedX)
             this.body.setDrag(200,0);
         }
@@ -55,25 +66,24 @@ class player extends Phaser.GameObjects.Sprite{
         
 
         //gauche//
-        if(this.keyQ.isDown){
-            this.speedX -= 4;
+        if(this.keyQ.isDown && this.inputs == true){
+            this.speedX -= 2;
             if(this.speedX <= -200){
                 this.speedX = -200
-                
             }
             this.body.setVelocityX(this.speedX);
         }
 
         //droite//
-        if (this.keyD.isDown){
-            this.speedX += 4;
+        if (this.keyD.isDown && this.inputs == true){
+            this.speedX += 2;
            if(this.speedX >= 200){
                this.speedX = 200
                
            }
            this.body.setVelocityX(this.speedX);
         }
-        if(this.keyD.isUp && this.keyQ.isUp){
+        if(this.keyD.isUp && this.keyQ.isUp && this.inputs == true && !myPad){
             this.speedX = 0
         }
         
@@ -83,9 +93,34 @@ class player extends Phaser.GameObjects.Sprite{
             this.bswitch = true;
             this.body.setVelocityY(this.speedY);
             nCountJump = 1;
-            // console.log(nCountJump);
         }
-       
+
+        if(myPad){
+
+
+            if(myPad.A && nCountJump<nCJumpMax && bswitch == false && joueur.body.onFloor()== true && this.inputs == true){
+                this.bswitch = true;
+                this.body.setVelocityY(this.speedY);
+                nCountJump = 1;
+            }
+            if(myPad.B && this.inputs == true){
+            }
+            if(myPad.leftStick.x < 0 && this.inputs == true){
+                this.speedX -= 2;
+                // console.log(this.speedX)
+                if(this.speedX <= -200){
+                    this.speedX = -200
+                }
+                this.body.setVelocityX(this.speedX);
+            }
+            if(myPad.leftStick.x > 0 && this.inputs == true){
+                this.speedX += 2;
+                if(this.speedX >= 200){
+                    this.speedX = 200
+                }
+                this.body.setVelocityX(this.speedX);
+            }
+        }
     }
 
 }

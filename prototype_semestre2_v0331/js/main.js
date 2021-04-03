@@ -9,7 +9,12 @@ var config = {
             debug: false
         }
     },
+    input: {
+        gamepad: true,
+        keyBoard: true
+    },
     scene: [load, mainMenu, level1]
+    
 };
 
 //création variable joueur//
@@ -20,4 +25,8 @@ var ennemies;
 var nCJumpMax = 2;
 var nCountJump = 0;
 var bswitch= false;
+
+//PAD CONTROLS//
+var myPad;
+
 var game = new Phaser.Game(config);
