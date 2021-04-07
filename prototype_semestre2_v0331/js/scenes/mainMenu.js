@@ -29,7 +29,9 @@ class mainMenu extends Phaser.Scene {
         textPlay.setInteractive();
         textPlay.on('pointerup', function(pointer){
             this.scene.start('level1');
-
+            musicConfig = {
+                mute:true
+            }
         }, this);
 
     }
