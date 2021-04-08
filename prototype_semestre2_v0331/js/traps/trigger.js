@@ -1,5 +1,5 @@
 class trigger extends Phaser.GameObjects.Container {
-    constructor(scene,x,y,texture){
+    constructor(scene,x,y,texture, isMeca){
         super(scene,x,y);
 
         //position du body//
@@ -22,4 +22,7 @@ class trigger extends Phaser.GameObjects.Container {
     activeLevier(){
         this.textAction = true;
     }
+
+
+
 }

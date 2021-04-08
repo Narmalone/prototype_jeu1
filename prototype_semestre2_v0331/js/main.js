@@ -1,12 +1,12 @@
 var config = {
     type: Phaser.AUTO,
-    width: 1000,
-    height: 600,
+    width: window.innerWidth,
+    height: window.innerHeight,
     physics:{
         default: 'arcade',
         arcade:{
             gravity:{ y: 300},
-            debug: false
+            debug: true
         }
     },
     input: {
@@ -29,4 +29,5 @@ var bswitch= false;
 //PAD CONTROLS//
 var myPad;
 
+var levierCount = 0;
 var game = new Phaser.Game(config);

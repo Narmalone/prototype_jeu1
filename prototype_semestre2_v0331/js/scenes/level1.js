@@ -24,13 +24,11 @@ class level1 extends Phaser.Scene{
         var ennemyObject = map.getObjectLayer('ennemySpawn')['objects'];
 
         //tableau//
-        var index = 0;
         //FOR EACH//
         ennemyObject.forEach(ennemyObject =>{
             //CREATIONS DES RATS par leurs spawns//
             this.obj = new rat(this,ennemyObject.x, ennemyObject.y, 'rat');
-            this.ennemies[index] = this.obj;
-            index ++;
+            this.ennemies.push(this.obj);
             // console.log(this.ennemies[index]);
 
         });
@@ -46,28 +44,24 @@ class level1 extends Phaser.Scene{
         this.levier = [];
         //GET DEPUIS LA MAP LE LAYEROBJECT//
         var triggerObject = map.getObjectLayer('levierSpawn')['objects'];
-        //TABLEAU//
-        var triggerIndex = 0;
        //FOR EACH//
         triggerObject.forEach(triggerObject =>{
             this.objt = new trigger(this,triggerObject.x, triggerObject.y, 'levier');
-            this.levier[triggerIndex] = this.objt;
-            triggerIndex ++;
+            this.levier.push(this.objt);
         })
+        console.log(this.levier);
 
         this.caisse = []
         var caisseObject = map.getObjectLayer('caisseSpawn')['objects'];
-        var caisseIndex = 0;
 
         caisseObject.forEach(caisseObject=>{
             this.objc = new fallingBox(this,caisseObject.x, caisseObject.y, 'caisse');
-            this.caisse[caisseIndex] = this.objc;
-            caisseIndex ++;
+            this.caisse.push(this.objc);
         })
+
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        this.physics.add.overlap(this.objc, this.ennemies, this.collRat,null,this);
+        this.physics.add.overlap(this.caisse, this.ennemies, this.collRat,null,this);
         myPad = this.input.gamepad.pad1;
-        console.log(myPad)
 
     }
     collRat(curObject, curEnnemy){
@@ -81,27 +75,38 @@ class level1 extends Phaser.Scene{
 
         //UPDATE DES MOOVEMENTS DU JOUEUR//
         joueur.update();
-        
+        this.levier.forEach(levier => {
+            if(levier.textAction){
+                if(levier.textInteract.alpha<1){
+                    levier.textInteract.alpha += 0.02
+                }
+    
+            }else{
+                if(levier.textInteract.alpha>0){
+                    levier.textInteract.alpha -= 0.02
+                }
+            }
+            levier.textAction = false;
+    
+        });
+
+        this.caisse.forEach(caisse =>{
+             // A OPTIMISER DANS LA CLASSE TRIGGER//
+            if(this.keyE.isDown){
+                caisse.body.allowGravity = true;
+
+                if(levierCount == 0){
+                    levierCount ++;
+                    console.log(levierCount)
+                }
+            }
+        })
         //UPDATE DES MOOVEMENTS DES RATS//
-        for (let i = 0; i < this.ennemies.length; i++) {
+        for (let i = 0; i < this.ennemies.length; i++){
             this.ennemies[i].checkColl();
         }
-        if(this.objt.textAction){
-            if(this.objt.textInteract.alpha<1){
-                this.objt.textInteract.alpha += 0.02
-            }
-
-        }else{
-            if(this.objt.textInteract.alpha>0){
-                this.objt.textInteract.alpha -= 0.02
-            }
-        }
-        this.objt.textAction = false;
-
-            // A OPTIMISER DANS LA CLASSE TRIGGER//
-        if(this.keyE.isDown){
-            this.objc.body.allowGravity = true;
-        }
+     
+           
         
     }
     

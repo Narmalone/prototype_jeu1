@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="20" tileheight="20" infinite="1" nextlayerid="10" nextobjectid="69">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="20" tileheight="20" infinite="1" nextlayerid="14" nextobjectid="94">
  <editorsettings>
   <export target="json/tilemap.json" format="json"/>
  </editorsettings>
@@ -164,8 +164,33 @@
  </objectgroup>
  <objectgroup id="8" name="caisseSpawn">
   <object id="26" gid="2" x="420" y="181.5" width="20" height="20"/>
+  <object id="93" gid="2" x="260" y="73.5" width="20" height="20"/>
  </objectgroup>
  <objectgroup id="9" name="levierSpawn">
   <object id="27" gid="2" x="120" y="240" width="20" height="20"/>
+  <object id="92" gid="2" x="216" y="260" width="20" height="20"/>
+ </objectgroup>
+ <objectgroup id="10" name="mecaSpawn">
+  <object id="71" gid="5" x="617.333" y="160" width="20" height="20"/>
+ </objectgroup>
+ <objectgroup id="12" name="platforMoove">
+  <object id="73" gid="3" x="740" y="80" width="20" height="20"/>
+  <object id="74" gid="3" x="760" y="80" width="20" height="20"/>
+  <object id="75" gid="3" x="780" y="80" width="20" height="20"/>
+  <object id="76" gid="3" x="800" y="80" width="20" height="20"/>
+  <object id="77" gid="3" x="820" y="80" width="20" height="20"/>
+  <object id="78" gid="3" x="840" y="80" width="20" height="20"/>
+  <object id="79" gid="3" x="860" y="80" width="20" height="20"/>
+  <object id="80" gid="3" x="880" y="80" width="20" height="20"/>
+  <object id="81" gid="3" x="900" y="80" width="20" height="20"/>
+  <object id="82" gid="3" x="740" y="100" width="20" height="20"/>
+  <object id="83" gid="3" x="760" y="100" width="20" height="20"/>
+  <object id="84" gid="3" x="780" y="100" width="20" height="20"/>
+  <object id="85" gid="3" x="800" y="100" width="20" height="20"/>
+  <object id="86" gid="3" x="820" y="100" width="20" height="20"/>
+  <object id="87" gid="3" x="840" y="100" width="20" height="20"/>
+  <object id="88" gid="3" x="880" y="100" width="20" height="20"/>
+  <object id="89" gid="3" x="860" y="100" width="20" height="20"/>
+  <object id="90" gid="3" x="900" y="100" width="20" height="20"/>
  </objectgroup>
 </map>

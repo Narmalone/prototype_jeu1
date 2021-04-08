@@ -22,7 +22,7 @@ class mainMenu extends Phaser.Scene {
         }
             
         menuMusic = this.sound.add('menuMusic', musicConfig);
-        textPlay = this.add.text(400,270, 'PLAY',{font: "100px",fill: "white"});
+        textPlay = this.add.text(window.innerWidth/2-75,window.innerHeight/2-75, 'PLAY',{font: "100px",fill: "white"});
         menuMusic.play();
 
         
