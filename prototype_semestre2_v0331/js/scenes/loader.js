@@ -89,6 +89,7 @@ class load extends Phaser.Scene {
         //GENERATION DES MUSIQUES ET SONS//
         //MUSIQUE DU MENU DU JEU//
         this.load.audio('menuMusic', 'assets/audio/menuMusic.mp3');
+        this.load.audio('trollMusic','assets/audio/trollMusic.mp3');
 
 
 

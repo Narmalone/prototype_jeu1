@@ -13,7 +13,7 @@ class mainMenu extends Phaser.Scene {
 
         var musicConfig = {
             mute: false,
-            volume: 0.30,
+            volume: 0.15,
             rate: 1,
             detune: -1000,
             seek: 0,

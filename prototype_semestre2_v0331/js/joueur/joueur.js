@@ -26,101 +26,95 @@ class player extends Phaser.GameObjects.Sprite{
         //vitesse//
         this.vmax = 300;
         this.speedX = 10;
-        this.speedY = -175;
+        this.speedY = -150;
         this.textAction;
         this.body.setAllowDrag(true)
         this.inputs = true;
         
-
-        //AJOUT DU GAMEPAD//
-        // this.input.GAMEPAD.once('down', function (pad, button, index){
-        //     text.setText('Playing with ' + pad.id);
-
-        //     GAMEPAD = pad;
-    
-        // }, this);
+        this.playerState = 0;
 
     }
 
 
 
     update(){
-        
-        this.body.setDrag(1000,0);
+        if(this.playerState == 0){
+            this.body.setDrag(1000,0);
 
-        if(Math.abs(this.speedX && this.inputs == true) >= 200){
-            this.inputs = false
-            // console.log(this.speedX)
-            this.body.setDrag(200,0);
-        }
-        if(Math.abs(this.speedX && this.inputs == true) <= -200){
-            this.inputs = false
-            console.log(this.speedX)
-            this.body.setDrag(200,0);
-        }
-        //Quand le personnage ne bouge pas//
-
-        if(joueur.body.onFloor()==true){
-            nCountJump = 0;
-        }
-        
-
-        //gauche//
-        if(this.keyQ.isDown && this.inputs == true){
-            this.speedX -= 2;
-            if(this.speedX <= -200){
-                this.speedX = -200
-            }
-            this.body.setVelocityX(this.speedX);
-        }
-
-        //droite//
-        if (this.keyD.isDown && this.inputs == true){
-            this.speedX += 2;
-           if(this.speedX >= 200){
-               this.speedX = 200
-               
-           }
-           this.body.setVelocityX(this.speedX);
-        }
-        if(this.keyD.isUp && this.keyQ.isUp && this.inputs == true && !myPad){
-            this.speedX = 0
-        }
-        
-
-        //augmenter l'itération pour le jump//
-        if(this.keyZ.isDown && nCountJump<nCJumpMax && bswitch == false && joueur.body.onFloor()== true){
-            this.bswitch = true;
-            this.body.setVelocityY(this.speedY);
-            nCountJump = 1;
-        }
-
-        if(myPad){
-
-
-            if(myPad.A && nCountJump<nCJumpMax && bswitch == false && joueur.body.onFloor()== true && this.inputs == true){
-                this.bswitch = true;
-                this.body.setVelocityY(this.speedY);
-                nCountJump = 1;
-            }
-            if(myPad.B && this.inputs == true){
-            }
-            if(myPad.leftStick.x < 0 && this.inputs == true){
-                this.speedX -= 2;
+            if(Math.abs(this.speedX && this.inputs == true) >= 200){
+                this.inputs = false
                 // console.log(this.speedX)
+                this.body.setDrag(200,0);
+            }
+            if(Math.abs(this.speedX && this.inputs == true) <= -200){
+                this.inputs = false
+                console.log(this.speedX)
+                this.body.setDrag(200,0);
+            }
+            //Quand le personnage ne bouge pas//
+
+            if(joueur.body.onFloor()==true){
+                nCountJump = 0;
+            }
+            
+
+            //gauche//
+            if(this.keyQ.isDown && this.inputs == true){
+                this.speedX -= 2;
                 if(this.speedX <= -200){
                     this.speedX = -200
                 }
                 this.body.setVelocityX(this.speedX);
             }
-            if(myPad.leftStick.x > 0 && this.inputs == true){
+
+            //droite//
+            if (this.keyD.isDown && this.inputs == true){
                 this.speedX += 2;
-                if(this.speedX >= 200){
-                    this.speedX = 200
+            if(this.speedX >= 200){
+                this.speedX = 200
+                
+            }
+            this.body.setVelocityX(this.speedX);
+            }
+            if(this.keyD.isUp && this.keyQ.isUp && this.inputs == true && !myPad){
+                this.speedX = 0
+            }
+            
+
+            //augmenter l'itération pour le jump//
+            if(this.keyZ.isDown && nCountJump<nCJumpMax && bswitch == false && joueur.body.onFloor()== true){
+                this.bswitch = true;
+                this.body.setVelocityY(this.speedY);
+                nCountJump = 1;
+            }
+
+            if(myPad){
+
+
+                if(myPad.A && nCountJump<nCJumpMax && bswitch == false && joueur.body.onFloor()== true && this.inputs == true){
+                    this.bswitch = true;
+                    this.body.setVelocityY(this.speedY);
+                    nCountJump = 1;
                 }
-                this.body.setVelocityX(this.speedX);
+                if(myPad.B && this.inputs == true){
+                }
+                if(myPad.leftStick.x < 0 && this.inputs == true){
+                    this.speedX -= 2;
+                    // console.log(this.speedX)
+                    if(this.speedX <= -200){
+                        this.speedX = -200
+                    }
+                    this.body.setVelocityX(this.speedX);
+                }
+                if(myPad.leftStick.x > 0 && this.inputs == true){
+                    this.speedX += 2;
+                    if(this.speedX >= 200){
+                        this.speedX = 200
+                    }
+                    this.body.setVelocityX(this.speedX);
+                }
             }
         }
     }
-
 }
+
