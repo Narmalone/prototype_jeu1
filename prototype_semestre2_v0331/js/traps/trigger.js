@@ -1,7 +1,7 @@
 class trigger extends Phaser.GameObjects.Container {
-    constructor(scene,x,y,texture, isMeca){
+    constructor(scene,x,y,texture, ID){
         super(scene,x,y);
-
+        this.ID=ID;
         //position du body//
         this.setSize(50,50);
         //ajout de l'existance de l'objet et de sa physique//

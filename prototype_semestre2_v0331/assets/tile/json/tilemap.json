@@ -139,26 +139,44 @@
                  "height":20,
                  "id":26,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"ID",
+                         "type":"int",
+                         "value":1
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":20,
-                 "x":420,
-                 "y":181.5
+                 "x":266,
+                 "y":66.8333333333333
                 }, 
                 {
                  "gid":2,
                  "height":20,
                  "id":93,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"ID",
+                         "type":"int",
+                         "value":2
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":20,
-                 "x":260,
-                 "y":73.5
+                 "x":412.666666666667,
+                 "y":183.5
                 }],
          "opacity":1,
+         "properties":[
+                {
+                 "name":"ID",
+                 "type":"int",
+                 "value":0
+                }],
          "type":"objectgroup",
          "visible":true,
          "x":0,
@@ -174,6 +192,12 @@
                  "height":20,
                  "id":27,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"ID",
+                         "type":"int",
+                         "value":1
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -186,6 +210,12 @@
                  "height":20,
                  "id":92,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"ID",
+                         "type":"int",
+                         "value":2
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -453,7 +483,7 @@
  "nextobjectid":94,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.4.2",
  "tileheight":20,
  "tilesets":[
         {

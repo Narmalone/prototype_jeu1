@@ -46,7 +46,7 @@ class level1 extends Phaser.Scene{
         var triggerObject = map.getObjectLayer('levierSpawn')['objects'];
        //FOR EACH//
         triggerObject.forEach(triggerObject =>{
-            this.objt = new trigger(this,triggerObject.x, triggerObject.y, 'levier');
+            this.objt = new trigger(this,triggerObject.x, triggerObject.y, 'levier',triggerObject.properties[0].value);
             this.levier.push(this.objt);
         })
         console.log(this.levier);
@@ -55,7 +55,7 @@ class level1 extends Phaser.Scene{
         var caisseObject = map.getObjectLayer('caisseSpawn')['objects'];
 
         caisseObject.forEach(caisseObject=>{
-            this.objc = new fallingBox(this,caisseObject.x, caisseObject.y, 'caisse');
+            this.objc = new fallingBox(this,caisseObject.x, caisseObject.y, 'caisse',caisseObject.properties[0].value);
             this.caisse.push(this.objc);
         })
 
@@ -76,7 +76,14 @@ class level1 extends Phaser.Scene{
         //UPDATE DES MOOVEMENTS DU JOUEUR//
         joueur.update();
         this.levier.forEach(levier => {
+
+
             if(levier.textAction){
+                if(this.keyE.isDown){
+                    console.log(this.caisse[levier.ID-1]);
+                    this.caisse[levier.ID-1].body.allowGravity = true;
+                    
+                }
                 if(levier.textInteract.alpha<1){
                     levier.textInteract.alpha += 0.02
                 }
@@ -90,17 +97,6 @@ class level1 extends Phaser.Scene{
     
         });
 
-        this.caisse.forEach(caisse =>{
-             // A OPTIMISER DANS LA CLASSE TRIGGER//
-            if(this.keyE.isDown){
-                caisse.body.allowGravity = true;
-
-                if(levierCount == 0){
-                    levierCount ++;
-                    console.log(levierCount)
-                }
-            }
-        })
         //UPDATE DES MOOVEMENTS DES RATS//
         for (let i = 0; i < this.ennemies.length; i++){
             this.ennemies[i].checkColl();
