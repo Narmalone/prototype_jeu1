@@ -29,5 +29,4 @@ var bswitch= false;
 //PAD CONTROLS//
 var myPad;
 
-var levierCount = 0;
 var game = new Phaser.Game(config);
