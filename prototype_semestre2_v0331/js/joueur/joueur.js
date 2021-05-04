@@ -30,9 +30,10 @@ class player extends Phaser.GameObjects.Sprite{
         this.textAction;
         this.body.setAllowDrag(true)
         this.inputs = true;
-        
+        this.inputState = 0;
         this.playerState = 0;
 
+        this.platMoovante;
     }
 
 
@@ -88,6 +89,8 @@ class player extends Phaser.GameObjects.Sprite{
                 nCountJump = 1;
             }
 
+            
+    
             if(myPad){
 
 
@@ -115,6 +118,19 @@ class player extends Phaser.GameObjects.Sprite{
                 }
             }
         }
+        // else if(this.playerState == 1){
+        //     this.body.setVelocityX(0)
+        //     if(this.keyD.isDown){
+        //         platMoovante.body.setVelocityX(50);
+        //         platMoovante.physics.moveToObject(joueur,platMoovante,200);
+        //     }
+
+
+        // }
+      
+
+
+
     }
 }
 
