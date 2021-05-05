@@ -9,6 +9,7 @@ class level1 extends Phaser.Scene{
         const map = this.make.tilemap({key:'level1'});
         const platformTiles = map.addTilesetImage('tilemap','platform');
         const platform = map.createLayer('platformer',platformTiles,0,0);
+        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         //CREATION DU JOUEUR//
         joueur = new player(this,40,200,'personnage');
@@ -59,9 +60,24 @@ class level1 extends Phaser.Scene{
             this.caisse.push(this.objc);
         })
 
-        this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         this.physics.add.overlap(this.caisse, this.ennemies, this.collRat,null,this);
         myPad = this.input.gamepad.pad1;
+        //meca spawn//
+        this.meca = []
+        var mecaObject = map.getObjectLayer('mecaSpawn')['objects'];
+
+        mecaObject.forEach(mecaObject =>{
+            this.objm = new Meca(this,mecaObject.x, mecaObject.y, 'levier');
+            this.meca.push(this.objm);
+        })
+
+        this.platMoov = []
+        var platMoovObject = map.getObjectLayer('platMoov')['objects'];
+
+        platMoovObject.forEach(platMoovObject =>{
+            this.objplat = new platMoove(this,platMoovObject.x, platMoovObject.y,'caisse')
+            this.platMoov.push(this.objplat);
+        })
 
     }
     collRat(curObject, curEnnemy){
@@ -96,13 +112,36 @@ class level1 extends Phaser.Scene{
             levier.textAction = false;
     
         });
+        this.meca.forEach(meca => {
+
+
+            if(meca.textAction){
+                if(this.keyE.isDown){
+                    this.platMoov[meca.ID-1];
+                }
+                if(meca.textInteract.alpha<1){
+                    meca.textInteract.alpha += 0.02
+                }
+    
+            }else{
+                if(meca.textInteract.alpha>0){
+                    meca.textInteract.alpha -= 0.02
+                }
+            }
+            meca.textAction = false;
+            //PLATEMOOV//
+            if(meca.platMoovOn == true && this.keyE.isDown){
+                console.log('BOUGE LA PLATEFORME GIROU')
+            }
+
+        });
 
         //UPDATE DES MOOVEMENTS DES RATS//
         for (let i = 0; i < this.ennemies.length; i++){
             this.ennemies[i].checkColl();
         }
      
-           
+        
         
     }
     
