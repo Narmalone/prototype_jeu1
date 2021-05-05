@@ -10,6 +10,7 @@ class level1 extends Phaser.Scene{
         const platformTiles = map.addTilesetImage('tilemap','platform');
         const platform = map.createLayer('platformer',platformTiles,0,0);
         this.keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.interactionCount = 0
 
         //CREATION DU JOUEUR//
         joueur = new player(this,40,200,'personnage');
@@ -130,8 +131,16 @@ class level1 extends Phaser.Scene{
             }
             meca.textAction = false;
             //PLATEMOOV//
-            if(meca.platMoovOn == true && this.keyE.isDown){
-                console.log('BOUGE LA PLATEFORME GIROU')
+            if(meca.platMoovOn == true && this.keyE.isDown && this.interactionCount == 0){
+                console.log('je rentre dans le mécanisme')
+                this.interactionCount = 1
+                joueur.body.setVelocityX(0)
+                joueur.inputs = false
+                if(this.interactionCount == 1 && this.keyE.isDown){
+                    console.log('je sors du mécanisme')
+                    joueur.inputs = true
+                    this.interactionCount = 0;
+                }
             }
 
         });
@@ -143,6 +152,12 @@ class level1 extends Phaser.Scene{
      
         
         
+    }
+
+    inMeca(){
+        if(this.interactionCount == 0 && this.key.isDown){
+            
+        }
     }
     
 }

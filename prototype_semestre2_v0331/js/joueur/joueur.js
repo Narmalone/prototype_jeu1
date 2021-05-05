@@ -118,13 +118,10 @@ class player extends Phaser.GameObjects.Sprite{
                 }
             }
         }
-        // else if(this.playerState == 1){
-        //     this.body.setVelocityX(0)
-        //     if(this.keyD.isDown){
-        //         platMoovante.body.setVelocityX(50);
-        //         platMoovante.physics.moveToObject(joueur,platMoovante,200);
-        //     }
-
+        else if(this.playerState == 1){
+            this.body.setVelocityX(0)
+        }
+        // if(this.playerState == 1){
 
         // }
       
