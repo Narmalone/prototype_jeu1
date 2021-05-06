@@ -25,7 +25,20 @@ class Meca extends Phaser.GameObjects.Container {
         this.textAction = true;
     }
     master(){
-        this.platMoovOn = true
+        this.platMoovOn = false
+    }
+
+    inMeca(){
+        if(this.platMoovOn == false){
+            this.platMoovOn = true
+        }
+    }
+    outMeca(){
+        if(this.platMooveOn == true){
+            this.platMoovOn = false
+            console.log('je sors du mécanisme')
+
+        }
     }
 
 }

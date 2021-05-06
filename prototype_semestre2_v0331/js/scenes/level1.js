@@ -131,18 +131,19 @@ class level1 extends Phaser.Scene{
             }
             meca.textAction = false;
             //PLATEMOOV//
-            if(meca.platMoovOn == true && this.keyE.isDown && this.interactionCount == 0){
-                console.log('je rentre dans le mécanisme')
-                this.interactionCount = 1
+            if(meca.platMoovOn == false && this.keyE.isDown && this.interactionCount == 0){
                 joueur.body.setVelocityX(0)
+                this.interactionCount = 1
                 joueur.inputs = false
-                if(this.interactionCount == 1 && this.keyE.isDown){
-                    console.log('je sors du mécanisme')
-                    joueur.inputs = true
+                this.objm.inMeca();
+                console.log(this.objm)
+
+                if(this.interactionCount == 1 && this.keyE.isDown && meca.platMoovOn == true){
                     this.interactionCount = 0;
+                    joueur.inputs = true
+                    this.objm.outMeca();
                 }
             }
-
         });
 
         //UPDATE DES MOOVEMENTS DES RATS//
@@ -154,10 +155,19 @@ class level1 extends Phaser.Scene{
         
     }
 
-    inMeca(){
-        if(this.interactionCount == 0 && this.key.isDown){
-            
-        }
-    }
+    // inMeca(){
+    //     if(this.interactionCount == 0 && this.keyE.isDown){
+    //         this.interactionCount = 1
+    //         joueur.inputs = false
+    //         this.meca.platMoovOn = true
+    //     }
+    // }
+    // outMeca(){
+    //     if(this.interactionCount == 1 && this.keyE.isDown){
+    //         joueur.inputs = true
+    //         this.meca.platMoovOn = false
+    //         this.interactionCount = 0;
+    //     }
+    // }
     
 }
