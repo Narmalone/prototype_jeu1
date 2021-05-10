@@ -36,8 +36,6 @@ class Meca extends Phaser.GameObjects.Container {
     outMeca(){
         if(this.platMooveOn == true){
             this.platMoovOn = false
-            console.log('je sors du mécanisme')
-
         }
     }
 

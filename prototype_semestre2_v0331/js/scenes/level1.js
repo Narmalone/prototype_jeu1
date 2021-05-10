@@ -16,6 +16,19 @@ class level1 extends Phaser.Scene{
         joueur = new player(this,40,200,'personnage');
         platform.setCollisionByExclusion(-1, true);
         this.physics.add.collider(joueur, platform);
+        
+        // 
+        // 
+        // 
+        // 
+        // CREATION DE LA FUCKING RAGE BAR oui ok merci Khénan
+        // 
+        // 
+        // 
+        //
+        this.bar = new rageBar(this, joueur.x, joueur.y);
+
+
         //CREATION DE LA PLATEFORMES DES ENNEMIS//
         const ennemyplatform = map.createLayer('ennemyplatform',platformTiles,0,0);
         ennemyplatform.setCollisionByExclusion(-1, true);
@@ -51,7 +64,6 @@ class level1 extends Phaser.Scene{
             this.objt = new trigger(this,triggerObject.x, triggerObject.y, 'levier',triggerObject.properties[0].value);
             this.levier.push(this.objt);
         })
-        console.log(this.levier);
 
         this.caisse = []
         var caisseObject = map.getObjectLayer('caisseSpawn')['objects'];
@@ -89,6 +101,8 @@ class level1 extends Phaser.Scene{
         console.log(curEnnemy)
     }
     update(){
+        // this.rageCountDown-=0.02;
+        // console.log(this.rageCountDown);
 
         //UPDATE DES MOOVEMENTS DU JOUEUR//
         joueur.update();
@@ -136,12 +150,14 @@ class level1 extends Phaser.Scene{
                 this.interactionCount = 1
                 joueur.inputs = false
                 this.objm.inMeca();
-                console.log(this.objm)
+                // console.log(this.objm)
+                console.log('inMEca')
 
                 if(this.interactionCount == 1 && this.keyE.isDown && meca.platMoovOn == true){
                     this.interactionCount = 0;
                     joueur.inputs = true
                     this.objm.outMeca();
+                    console.log('outmeca')
                 }
             }
         });
@@ -151,23 +167,8 @@ class level1 extends Phaser.Scene{
             this.ennemies[i].checkColl();
         }
      
-        
+        this.bar.update();
         
     }
-
-    // inMeca(){
-    //     if(this.interactionCount == 0 && this.keyE.isDown){
-    //         this.interactionCount = 1
-    //         joueur.inputs = false
-    //         this.meca.platMoovOn = true
-    //     }
-    // }
-    // outMeca(){
-    //     if(this.interactionCount == 1 && this.keyE.isDown){
-    //         joueur.inputs = true
-    //         this.meca.platMoovOn = false
-    //         this.interactionCount = 0;
-    //     }
-    // }
     
 }
