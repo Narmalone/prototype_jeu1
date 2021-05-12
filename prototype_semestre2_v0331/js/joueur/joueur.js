@@ -83,7 +83,7 @@ class player extends Phaser.GameObjects.Sprite{
             
 
             //augmenter l'itération pour le jump//
-            if(this.keyZ.isDown && nCountJump<nCJumpMax && bswitch == false && joueur.body.onFloor()== true){
+            if(this.keyZ.isDown && nCountJump<nCJumpMax && this.inputs == true && bswitch == false && joueur.body.onFloor()== true){
                 this.bswitch = true;
                 this.body.setVelocityY(this.speedY);
                 nCountJump = 1;
@@ -118,14 +118,6 @@ class player extends Phaser.GameObjects.Sprite{
                 }
             }
         }
-        // else if(this.playerState == 1){
-        //     this.body.setVelocityX(0)
-        // }
-        // if(this.playerState == 1){
-
-        // }
-      
-
 
 
     }

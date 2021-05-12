@@ -44,8 +44,6 @@ class level1 extends Phaser.Scene{
             //CREATIONS DES RATS par leurs spawns//
             this.obj = new rat(this,ennemyObject.x, ennemyObject.y, 'rat');
             this.ennemies.push(this.obj);
-            // console.log(this.ennemies[index]);
-
         });
         
         //AJOUT DE COLLISIONS ENTRE LES ENNEMIES ET LEUR PLATEFORMES//
@@ -97,8 +95,6 @@ class level1 extends Phaser.Scene{
         // this.disBody = true;
         this.physics.world.disable(curEnnemy);
         curEnnemy.setVisible(false);
-
-        console.log(curEnnemy)
     }
     update(){
         // this.rageCountDown-=0.02;
@@ -111,7 +107,7 @@ class level1 extends Phaser.Scene{
 
             if(levier.textAction){
                 if(this.keyE.isDown){
-                    console.log(this.caisse[levier.ID-1]);
+                    // console.log(this.caisse[levier.ID-1]);
                     this.caisse[levier.ID-1].body.allowGravity = true;
                     
                 }
@@ -147,28 +143,27 @@ class level1 extends Phaser.Scene{
             //PLATEMOOV//
             if(meca.platMoovOn == false && this.keyE.isDown && this.interactionCount == 0){
                 joueur.body.setVelocityX(0)
-                this.interactionCount = 1
+                // this.interactionCount = 1
                 joueur.inputs = false
                 this.objm.inMeca();
-                // console.log(this.objm)
-                console.log('inMEca')
-
-                if(this.interactionCount == 1 && this.keyE.isDown && meca.platMoovOn == true){
-                    this.interactionCount = 0;
-                    joueur.inputs = true
-                    this.objm.outMeca();
-                    console.log('outmeca')
-                }
+                console.log(meca.platMoovOn)
             }
+            if(this.interactionCount == 1 && this.keyE.isDown && meca.platMoovOn == true){
+                this.interactionCount = 0;
+                joueur.inputs = true
+                this.objm.outMeca();
+                console.log('outMeca')
+            
+            }
+            
         });
 
         //UPDATE DES MOOVEMENTS DES RATS//
         for (let i = 0; i < this.ennemies.length; i++){
             this.ennemies[i].checkColl();
         }
-     
+        this.objm.isItInMeca();
         this.bar.update();
-        
     }
     
 }
