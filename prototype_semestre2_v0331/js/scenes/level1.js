@@ -141,20 +141,22 @@ class level1 extends Phaser.Scene{
             }
             meca.textAction = false;
             //PLATEMOOV//
-            if(meca.platMoovOn == false && this.keyE.isDown && this.interactionCount == 0){
+            if(meca.platMoovOn == false && this.keyE.isDown){
                 joueur.body.setVelocityX(0)
-                // this.interactionCount = 1
                 joueur.inputs = false
                 this.objm.inMeca();
-                console.log(meca.platMoovOn)
+                if(meca.goOutOfMeca = 3 && this.keyE.isDown){
+                    joueur.inputs = true
+                    meca.goOutOfMeca = 0
+                }
+                
+                // console.log(meca.platMoovOn)
             }
-            if(this.interactionCount == 1 && this.keyE.isDown && meca.platMoovOn == true){
-                this.interactionCount = 0;
-                joueur.inputs = true
-                this.objm.outMeca();
-                console.log('outMeca')
-            
-            }
+            // if(this.keyE.isDown && meca.platMoovOn == true){
+            //     joueur.inputs = true
+            //     this.objm.outMeca();
+            //     console.log('outMeca')
+            // }
             
         });
 

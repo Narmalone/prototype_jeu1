@@ -20,6 +20,7 @@ class Meca extends Phaser.GameObjects.Container {
         this.triggerState = 0;
         scene.physics.add.overlap(this,joueur,this.master,null,this);
         this.platMoovOn = false
+        this.goOutOfMeca = 0
 
     }
     activeLevier(){
@@ -38,23 +39,23 @@ class Meca extends Phaser.GameObjects.Container {
 
         }
     }
-    outMeca(){
-        if(this.platMooveOn == true){
-            console.log('sort de là')
-        }
-    }
+    // outMeca(){
+
+    //     if(this.platMoovOn == true){
+    //         console.log('tu peux sortir quand tu veux')
+
+    //     }
+    // }
 
     isItInMeca(){
-        this.goOutOfMeca = 0
-
-
         if(this.platMoovOn == true){
             if(this.goOutOfMeca <= 3){
-                // this.goOutOfMeca +=0.02
+                this.goOutOfMeca +=0.02
                 console.log(this.goOutOfMeca)
             }
-            if(this.goOutOfMeca>3){
-                this.outMeca();
+            if(this.goOutOfMeca>=3){
+                this.goOutOfMeca = 3
+                // this.outMeca();
                 this.platMoovOn = false
             }
         }

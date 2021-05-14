@@ -68,10 +68,7 @@ class load extends Phaser.Scene {
             percentText.destroy();
             assetText.destroy();
         });
-        //CREATION DU JOUEUR//
-        // for(var i = 0; i< 1000; i++){
-        //     this.load.image('personnage' + i,'assets/personnage.png');
-        // }
+        
         this.load.image('personnage','assets/personnage.png');
         //GENERATION DU NIVEAU//
         this.load.tilemapTiledJSON('level1','assets/tile/json/tilemap.json');

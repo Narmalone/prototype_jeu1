@@ -10,7 +10,7 @@ class rageBar extends Phaser.GameObjects.Graphics{
         this.value = 0;
         this.valueMax = 100;
         this.percentValue = 100;
-        this.timedEvent = scene.time.addEvent({ delay: 3000, callback: this.rageActivated, callbackScope: this});
+        this.timedEvent = scene.time.addEvent({ delay: 60000, callback: this.rageActivated, callbackScope: this});
     }
 
     rageActivated(){
