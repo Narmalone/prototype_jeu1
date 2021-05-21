@@ -30,35 +30,4 @@ class Meca extends Phaser.GameObjects.Container {
         this.platMoovOn = false
     }
 
-    inMeca(){
-        if(this.platMoovOn == false){
-            this.platMoovOn = true
-            this.isItInMeca();
-            console.log('jarrive')
-            // console.log(this.platMoovOn)
-
-        }
-    }
-    // outMeca(){
-
-    //     if(this.platMoovOn == true){
-    //         console.log('tu peux sortir quand tu veux')
-
-    //     }
-    // }
-
-    isItInMeca(){
-        if(this.platMoovOn == true){
-            if(this.goOutOfMeca <= 3){
-                this.goOutOfMeca +=0.02
-                console.log(this.goOutOfMeca)
-            }
-            if(this.goOutOfMeca>=3){
-                this.goOutOfMeca = 3
-                // this.outMeca();
-                this.platMoovOn = false
-            }
-        }
-    }
-
 }

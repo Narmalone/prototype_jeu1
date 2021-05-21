@@ -26,6 +26,10 @@ var nCJumpMax = 2;
 var nCountJump = 0;
 var bswitch= false;
 
+
+//collectibles//
+var seringuesDopantes;
+var calmants;
 //PAD CONTROLS//
 var myPad;
 

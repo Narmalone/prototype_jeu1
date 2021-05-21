@@ -16,7 +16,6 @@ class level1 extends Phaser.Scene{
         joueur = new player(this,40,200,'personnage');
         platform.setCollisionByExclusion(-1, true);
         this.physics.add.collider(joueur, platform);
-        
         // 
         // 
         // 
@@ -90,6 +89,15 @@ class level1 extends Phaser.Scene{
             this.platMoov.push(this.objplat);
         })
 
+
+
+        seringuesDopantes = new seringueDopante(this,200,200,'seringueDopante');
+        this.physics.add.collider(seringuesDopantes,platform)
+
+        calmants  = new calmant(this,400,200,'calmants');
+        this.physics.add.collider(calmants,platform);
+
+        // this.cameras.main.setZoom(0.4)
     }
     collRat(curObject, curEnnemy){
         // this.disBody = true;
@@ -102,6 +110,8 @@ class level1 extends Phaser.Scene{
 
         //UPDATE DES MOOVEMENTS DU JOUEUR//
         joueur.update();
+        seringuesDopantes.update();
+
         this.levier.forEach(levier => {
 
 
@@ -129,6 +139,8 @@ class level1 extends Phaser.Scene{
             if(meca.textAction){
                 if(this.keyE.isDown){
                     this.platMoov[meca.ID-1];
+                    this.platMoovState = 1;
+                    console.log('ça devrait bouger')
                 }
                 if(meca.textInteract.alpha<1){
                     meca.textInteract.alpha += 0.02
@@ -139,32 +151,37 @@ class level1 extends Phaser.Scene{
                     meca.textInteract.alpha -= 0.02
                 }
             }
-            meca.textAction = false;
-            //PLATEMOOV//
-            if(meca.platMoovOn == false && this.keyE.isDown){
-                joueur.body.setVelocityX(0)
-                joueur.inputs = false
-                this.objm.inMeca();
-                if(meca.goOutOfMeca = 3 && this.keyE.isDown){
-                    joueur.inputs = true
-                    meca.goOutOfMeca = 0
-                }
+        //     meca.textAction = false;
+        //     PLATEMOOV//
+        //     if(meca.platMoovOn == false && this.keyE.isDown){
+        //         joueur.body.setVelocityX(0)
+        //         joueur.inputs = false
+        //         this.objm.inMeca();
+        //         if(meca.goOutOfMeca = 3 && this.keyE.isDown){
+        //             joueur.inputs = true
+        //             meca.goOutOfMeca = 0
+        //         }
                 
-                // console.log(meca.platMoovOn)
-            }
-            // if(this.keyE.isDown && meca.platMoovOn == true){
-            //     joueur.inputs = true
-            //     this.objm.outMeca();
-            //     console.log('outMeca')
-            // }
+        //         console.log(meca.platMoovOn)
+        //     }
+        //     if(this.keyE.isDown && meca.platMoovOn == true){
+        //         joueur.inputs = true
+        //         this.objm.outMeca();
+        //         console.log('outMeca')
+        //     }
             
         });
+        this.platMoov.forEach(platMoov =>{
+            if(this.platMoovState == 1){
+                platMoov.body.setVelocityY(-50)
+            }
+        })
 
         //UPDATE DES MOOVEMENTS DES RATS//
         for (let i = 0; i < this.ennemies.length; i++){
             this.ennemies[i].checkColl();
         }
-        this.objm.isItInMeca();
+        // this.objm.isItInMeca();
         this.bar.update();
     }
     
