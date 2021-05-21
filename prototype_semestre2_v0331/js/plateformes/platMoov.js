@@ -8,7 +8,7 @@ class platMoove extends Phaser.GameObjects.Sprite {
         this.setOrigin(0);
 
         scene.physics.add.collider(this, joueur);
-        this.body.setImmovable(true)
+        this.body.setImmovable(true);
     }
 
 }

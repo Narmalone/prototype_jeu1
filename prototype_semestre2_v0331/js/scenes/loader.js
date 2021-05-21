@@ -90,8 +90,10 @@ class load extends Phaser.Scene {
         //MUSIQUE DU MENU DU JEU//
         this.load.audio('menuMusic', 'assets/audio/menuMusic.mp3');
         this.load.audio('trollMusic','assets/audio/trollMusic.mp3');
-
-
+        
+        //SPRITESHEETS//
+        this.load.spritesheet('seringueDopante', 'assets/spritesheet_seringueDopante.png',{frameWidth: 502, frameHeight: 779})
+        this.load.image('calmants', 'assets/calmants.png');
 
     }
 

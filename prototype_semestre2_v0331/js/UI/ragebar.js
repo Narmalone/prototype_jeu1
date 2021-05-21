@@ -10,11 +10,13 @@ class rageBar extends Phaser.GameObjects.Graphics{
         this.value = 0;
         this.valueMax = 100;
         this.percentValue = 100;
-        this.timedEvent = scene.time.addEvent({ delay: 60000, callback: this.rageActivated, callbackScope: this});
+        this.rage = false;
+        this.timedEvent = scene.time.addEvent({ delay: 5000, callback: this.rageActivated, callbackScope: this});
     }
 
     rageActivated(){
         this.clear();
+        this.rage = true
         console.log('rage active !')
         this.fillStyle(0xff0000)
         this.fillRect(this.x,this.y,this.valueMax,16)
@@ -22,9 +24,12 @@ class rageBar extends Phaser.GameObjects.Graphics{
     }
 
     update(){
-        this.percentValue = this.value / this.valueMax *80
-        this.fillStyle(0xfff000)
-        this.fillRect(this.x,this.y,this.timedEvent.getProgress()*80,16)
 
+        if(this.rage == false){
+            this.clear();
+            this.percentValue = this.value / this.valueMax *80
+            this.fillStyle(0xfff000)
+            this.fillRect(this.x,this.y,this.timedEvent.getProgress()*80,16)
+        }
     }
 }
